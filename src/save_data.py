@@ -58,7 +58,7 @@ class SaveData:
 
             self.ws.cell(row=self.count_row, column=9).value = ' | '.join(x for x in data_article['alternative'])
 
-            self.ws.cell(row=self.count_row, column=10).value = data_article['image'].split('data\\')[-1]
+            self.ws.cell(row=self.count_row, column=10).value = data_article['image']
 
             for sub_column, value in data_article['kriterii'].items():
 
@@ -119,7 +119,7 @@ class SaveData:
 
         return True
 
-    def save_data(self):
+    def save_data(self, name):
 
         self.create_title()
 
@@ -127,7 +127,7 @@ class SaveData:
 
         print()
 
-        self.wb.save(f'{dir_project}\\test.xlsx')
+        self.wb.save(f'{dir_project}\\{name}.xlsx')
 
         return True
 
@@ -137,4 +137,4 @@ if __name__ == '__main__':
 
     data_pars = pars_data
 
-    res = SaveData(data_pars).save_data()
+    res = SaveData(data_pars).save_data('name')

@@ -18,6 +18,7 @@ from src.logic.click_more import click_more
 from src.logic.create_dir import create_dir
 from src.logic.format_price import formate_price
 from src.logic.replace_symbol import replace_symbol
+from src.logic.save_image import save_image
 
 
 class SwitcherType:
@@ -213,18 +214,26 @@ class SwitcherType:
 
         path = f"{dir_project}\\data\\{main_category}\\{self.brand}\\{name_path}\\logo.jpg"
 
+        res_save = save_image(image, path, name_path)
+
         try:
-            p = requests.get(image)
+            # image_preview = self.driver.find_elements(by=By.XPATH,
+            #                                           value=f"//img[contains(@class, 'adimg_preview')]")[
+            #     -1].get_attribute('src')
+            image_preview = self.driver.find_elements(by=By.XPATH,
+                                                      value=f"//img[contains(@class, 'adimg_preview')]")
 
-            out = open(path, "wb")
+            for count, count_image in enumerate(image_preview):
+                _image = count_image.get_attribute('src')
 
-            out.write(p.content)
+                path_prev = f"{dir_project}\\data\\{main_category}\\{self.brand}\\{name_path}\\logo{count}.jpg"
 
-            out.close()
-        except Exception as es:
-            print(f'Ошибка при сохранение изображения "{name_path}" "{es}"')
+                res_save = save_image(_image, path_prev, name_path)
 
-            return ''
+                path = f'{path} | {path_prev}'
+
+        except:
+            path_prev = ''
 
         return path
 
@@ -389,3 +398,5 @@ class SwitcherType:
             print(f'Тип не определён')
 
         print(f'Обработал "{self.name}"')
+
+        return True

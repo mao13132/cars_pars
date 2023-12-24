@@ -43,7 +43,9 @@ class IterRow:
 
             print(f'Итерирую строчку "{row_range}"')
 
+        return True
+
     def iter_row(self, count_rows):
         res_iter = self._iter_row(count_rows)
 
-        print()
+        return True

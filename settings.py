@@ -10,14 +10,17 @@ import os
 
 dir_project = os.getcwd()
 
-main_category = 0
+main_category = 2
 
-target_language = 'Suomi'
+# target_language = 'Suomi'
+target_language = 'English'
 
 name_profile = 'intercars3'
 
 # alternative_ = 'Альтернативная деталь'
-alternative_ = 'Vaihtoehtoinen tuote'
+# alternative_ = 'Vaihtoehtoinen tuote'
+alternative_ = 'Alternative Article'
 
 # more_ = 'Дополнительная информация'
-more_ = 'Lisätietoja'
+# more_ = 'Lisätietoja'
+more_ = 'Additional information'

@@ -30,6 +30,8 @@ class StartPars:
         if not res_open:
             return False
 
+        print()
+
         click_sing_in = ClickSingIn(self.settings).click_sing_in()
 
         if not click_sing_in:
@@ -40,6 +42,11 @@ class StartPars:
 
         if not load_master:
             print(f'Не смог загрузить мастерскую')
+            return False
+
+        change_language = ChangeLanguage(self.settings).change(target_language)
+
+        if not change_language:
             return False
 
         main_category_list = LoadCategory(self.settings).load_category()
@@ -63,11 +70,6 @@ class StartPars:
         self.settings['pars_data'][main_category]['title'] = title
 
         self.settings['pars_data'][main_category]['subcategory'] = {}
-
-        change_language = ChangeLanguage(self.settings).change(target_language)
-
-        if not change_language:
-            return False
 
         res_iter = StartIterRow(self.settings).start_iter()
 
