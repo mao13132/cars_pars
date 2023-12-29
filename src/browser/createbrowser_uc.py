@@ -4,13 +4,12 @@ import platform
 
 import undetected_chromedriver as uc
 
-from settings import dir_project, name_profile
+from settings import dir_project
 
 
 class CreatBrowser:
 
     def __init__(self):
-        platform_to_os = platform.system()
 
         options = uc.ChromeOptions()
         options.add_argument("start-maximized")
@@ -20,13 +19,7 @@ class CreatBrowser:
         options.add_argument('ignore-certificate-errors')
         options.add_argument("--log-level=3")
 
-        user_system = getpass.getuser()
-
-        path_dir = (f'{dir_project}\\src\\profile\\{name_profile}')
-
         _patch = f"{dir_project}\\src\\browser\\chromedriver.exe"
-
-        options.add_argument(f'--user-data-dir={path_dir}')
 
         options.add_argument(
             f"user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -39,10 +32,3 @@ class CreatBrowser:
             print(f'Ошибка создания браузера {es}')
 
             self.driver = False
-
-        try:
-            browser_version = self.driver.capabilities['browserVersion']
-            driver_version = self.driver.capabilities['chrome']['chromedriverVersion'].split(' ')[0]
-            print(f"Браузер: {browser_version} драйвер: {driver_version}")
-        except:
-            print(f'Не получилось определить версию uc браузера')

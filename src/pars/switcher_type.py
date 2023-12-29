@@ -59,6 +59,9 @@ class SwitcherType:
         except:
             return False
 
+        if '--' in quanty:
+            return ''
+
         return quanty
 
     def get_sku(self, row):
@@ -397,6 +400,6 @@ class SwitcherType:
         else:
             print(f'Тип не определён')
 
-        print(f'Обработал "{self.name}"')
+        print(f'Обрабатываю "{self.name}"')
 
         return True

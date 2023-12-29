@@ -16,6 +16,7 @@ from src.pars._load_category import LoadCategory
 from src.pars._load_master import LoadMaster
 from src.pars._start_site import StartSite
 from src.pars.change_language import ChangeLanguage
+from src.pars.write_auth import WriteAuth
 
 
 class StartPars:
@@ -30,7 +31,10 @@ class StartPars:
         if not res_open:
             return False
 
-        print()
+        write_auth = WriteAuth(self.settings).start_auth()
+
+        if not write_auth:
+            return False
 
         click_sing_in = ClickSingIn(self.settings).click_sing_in()
 
@@ -49,21 +53,13 @@ class StartPars:
         if not change_language:
             return False
 
-        main_category_list = LoadCategory(self.settings).load_category()
-
-        if not main_category_list:
-            print(f'Не могу получить все категории')
-            return False
-
-        self.settings['main_category_list'] = main_category_list
-
-        self.settings['pars_data'] = {}
-
         title = GoCategory(self.settings).go_category()
 
         if not title:
             print(f'Не мог зайти в категорию')
             return False
+
+        self.settings['pars_data'] = {}
 
         self.settings['pars_data'][main_category] = {}
 
@@ -73,4 +69,4 @@ class StartPars:
 
         res_iter = StartIterRow(self.settings).start_iter()
 
-        print()
+        return res_iter

@@ -82,7 +82,7 @@ class SaveData:
 
             self.count_row += 1
 
-            print()
+        return True
 
     def iter_brand(self, data_):
         for name_brand, data_brand in data_.items():
@@ -90,23 +90,17 @@ class SaveData:
 
             res = self.iter_article(data_brand)
 
-            print()
-
     def iter_subcategory(self, data_):
         for name_subcategory, data_sub in data_.items():
             self.subcategory = name_subcategory
 
             res_brand = self.iter_brand(data_sub)
 
-            print()
-
     def iter_category(self):
         for count_category, data_category in self.data_pars.items():
             self.title = data_category['title']
 
             res_iter = self.iter_subcategory(data_category['subcategory'])
-
-            print()
 
     def create_title(self):
 
@@ -125,16 +119,6 @@ class SaveData:
 
         res_ = self.iter_category()
 
-        print()
-
         self.wb.save(f'{dir_project}\\{name}.xlsx')
 
         return True
-
-
-if __name__ == '__main__':
-    from _temp import pars_data
-
-    data_pars = pars_data
-
-    res = SaveData(data_pars).save_data('name')

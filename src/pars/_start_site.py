@@ -38,7 +38,6 @@ class StartSite:
         return res_open
 
     def load_site(self):
-        # res_open = self.site_inter_cars()
         res_open = self.site_car_parts()
 
         return res_open

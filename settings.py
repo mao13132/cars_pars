@@ -10,17 +10,21 @@ import os
 
 dir_project = os.getcwd()
 
-main_category = 2
+LOGIN = '3173299'
 
-# target_language = 'Suomi'
-target_language = 'English'
+PASSWORD = 'atj395'
 
-name_profile = 'intercars3'
+main_category = 0  # Здесь указываем какую категорию хотим обработать от 0 до 23
 
-# alternative_ = 'Альтернативная деталь'
-# alternative_ = 'Vaihtoehtoinen tuote'
-alternative_ = 'Alternative Article'
+sub_cat = 1  # Здесь указываем вложенную подкатегорию, 0 это кнопка back
 
-# more_ = 'Дополнительная информация'
-# more_ = 'Lisätietoja'
-more_ = 'Additional information'
+# target_language = 'Suomi'     # Указываем на каком языке хотим данные
+target_language = 'English'  # Указываем на каком языке хотим данные
+
+# alternative_ = 'Альтернативная деталь'    # Расскоментируем соответствующую языку надпись Rus
+# alternative_ = 'Vaihtoehtoinen tuote'    # Расскоментируем соответствующую языку надпись Fin
+alternative_ = 'Alternative Article'  # Расскоментируем соответствующую языку надпись Eng
+
+# more_ = 'Дополнительная информация'    # Расскоментируем соответствующую языку надпись Rus
+# more_ = 'Lisätietoja'    # Расскоментируем соответствующую языку надпись Fin
+more_ = 'Additional information'  # Расскоментируем соответствующую языку надпись Eng

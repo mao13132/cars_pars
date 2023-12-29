@@ -27,6 +27,8 @@ class StartIterRow:
 
         res_iter = IterRow(self.settings).iter_row(count_row)
 
-        save_file = SaveData(self.settings['pars_data']).save_data('name')
+        save_file = SaveData(self.settings['pars_data']).save_data('pars_data')
 
-        print()
+        print(f'Сохранил результаты')
+
+        return True

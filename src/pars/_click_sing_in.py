@@ -45,17 +45,9 @@ class ClickSingIn:
         if not res_click:
             return False
 
-        # time.sleep(6)
-
-        res_load = check_load(self.driver, '//*[contains(@value, "в норме")]')
-
-        # if not res_load:
-        #     return False
+        res_load = check_load(self.driver, '//*[contains(@value, "в норме")]', 10)
 
         click_sign_in = self._click_approve()
-
-        if not click_sign_in:
-            return False
 
         time.sleep(2)
 
